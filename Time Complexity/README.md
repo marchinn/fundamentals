@@ -80,7 +80,7 @@ binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 5) # output is also 4
 As we can see, the volume of data doubled, but it appended only one step to complete an operation, yet it only added one additional step to complete the operation. Time complexity has increased, but it has not doubled in proportion to the array's growth. This phenomenon is referred to as _logarithmic time complexity_.
 
 ### _O(n^2)_
-_O(n)_ means that the processing time increases in direct proportion to a doubled volume of data.
+_O(n^2)_ means that the processing time increases in direct proportion to a doubled volume of data.
 
 The code below is designed to generate an array containing all possible multiplied pairs of the elements from the original array:
 ####
@@ -98,3 +98,81 @@ print(multiplyPairs([1, 2])) # output is [1, 2, 2, 4]
 print(multiplyPairs([1, 2, 3, 4])) # output is [1, 2, 3, 4, 2, 4, 6, 8, 3, 6, 9, 12, 4, 8, 12, 16]
 ```
 When the array consists of only two elements, we must evaluate 4 operations. In the case of an array with four elements, the total number of operations required to compute all possible multiplied pairs is 16. The quadratic dependence on the volume of data in the algorithm is evident.
+
+### _O(n^3)_
+The time complexity _O(n^3)_ indicates that the required time increases threefold with the volume of data.
+
+A simple example A straightforward example is the multiplication of two matrices of order _nxn_. Each operation involves three nested loops, which implies that we must process an array for each element with a complexity of 
+_(array length)^2_.
+####
+```python
+def multiplyMatrices (matrixA, matrixB):
+    result = []
+    rows = len(matrixA)
+    cols = len(matrixA[0])
+
+    for i in range(rows):
+        stroke = []
+        for j in range(cols):
+            element = 0
+            for k in range(cols):
+                element += matrixA[i][k]*matrixB[k][j]
+            stroke.append(element)
+        result.append(stroke)
+    return result
+
+print( multiplyMatrices( [[1, 2],[3, 4]], [[1, 1],[2, 2]] )) # output is [[5, 5], [11, 11]]
+print( multiplyMatrices( [[1, 1, 1],[2, 3, 4],[5, 5, 5]], [[1, 3, 2],[2, 2, 0],[9, 2, 5]] )) # output is [[12, 7, 7], [44, 20, 24], [60, 35, 35]]
+```
+### _O(n!)_
+The time complexity _O(n!)_ means that required time increases factorially in relation to the volume of data.
+
+For example, explore all possible permutations of input list:
+####
+```python
+def Permutations(arr):
+    result = []
+    
+    def backtrack(start):
+        if start == len(arr):
+            result.append(arr[:])
+            return
+
+        for i in range(start, len(arr)):
+            arr[start], arr[i] = arr[i], arr[start]
+            backtrack(start + 1)
+            arr[start], arr[i] = arr[i], arr[start]
+
+    backtrack(0)
+    return result
+
+print(Permutations([1, 2]) ) # output is [[1, 2], [2, 1]]
+print(Permutations([1, 2, 3]) ) # output is [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 2, 1], [3, 1, 2]]
+```
+As evident, the time complexity in the second instance escalated to 3! due to the array containing three elements, while the first instance remained at 2! with only two elements.
+
+### _O(2^n)_
+The time complexity _O(2^n)_ represents exponential time complexity with a base of two and is dependent on value of n.
+
+The example below demonstrates a recursive algorithm for generating all possible subsets of the input list of symbols.
+####
+```python
+def generateSubsets(symbols):
+    result = []
+    
+    def backtrack(start, path):
+        result.append(path)
+
+        for i in range(start, len(symbols)):
+            backtrack(i + 1, path + [symbols[i]])
+    
+    backtrack(0, [])
+    return result
+
+print( generateSubsets([1, 2]) ) # output is [[], [1], [1, 2], [2]]
+print( generateSubsets(["a", "b", "c"]) ) # output is [[], ['a'], ['a', 'b'], ['a', 'b', 'c'], ['a', 'c'], ['b'], ['b'
+```
+At each element, it has the choice to either include the element in the current subset or not, what creates a branching factor of 2 (include or exclude) for each element. This approach results in an exponential growth in time complexity cause the number of operations as the volume of data increases.
+
+## Conclusion
+It is crucial to evaluate the time complexity of an algorithm, as it indicates whether more efficient algorithms are necessary for your project. A poor selection can lead to unforeseen issues in the code.
