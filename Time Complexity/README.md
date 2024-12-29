@@ -5,10 +5,10 @@ Time complexity is a measure that indicates the amount of time required to execu
 ## How it works?
 As it was noticed above, the time complexity's argument _n_ is the volume of data that can be processed. In most instances, _n_ is the largest data size that may be observed in algorithm and in practically using this is achieved by discarding the lesser parts of expression and less significant components of the time complexity equation.
 
-> For example: If the time required to complete the algorithm  is expressed as _n^3 + 5n^2 + 9n + 100_, the worst-case-time-complexity will be represented as _O(n^3)_ as it reflects the higher power and the coefficients aren't important. Even if the expression is _30000n_, the time complexity would still be classified as _O(n)_
+For example: If the time required to complete the algorithm  is expressed as _n<sup>3</sup> + 5n<sup>2</sup> + 9n + 100_, the worst-case-time-complexity will be represented as _O(n<sup>3</sup>)_ as it reflects the higher power and the coefficients aren't important. Even if the expression is _30000n_, the time complexity would still be classified as _O(n)_
 
 ## Why is it important?
-ML is interrupted refers to processing large datasets. In instances involving huge number of operations the use of algorithms with time complexities of O(n^2) and higher is ineffective as they operate more slowly than necessary and may lead to different errors and crashes during runtime an algorithm.
+ML is interrupted refers to processing large datasets. In instances involving huge number of operations the use of algorithms with time complexities of O(n<sup>2</sup>) and higher is ineffective as they operate more slowly than necessary and may lead to different errors and crashes during runtime an algorithm.
 Also it is important to make useful and rapid operational processes, particularly in contexts involving client interactions, such as searching for a specific item in a shopping catalog or transmitting data to numerous services. A Wrong choice of the time complexity can result in company looses, server failures and decreasing conversion.
 
 ## Commonly in ML are used following types of time complexity:
@@ -54,7 +54,7 @@ print (findMinimum([5, 7])) # output is 5
 As the size of an array increases, so does the time required to process an operation. With an growing volume of data, the time complexity also proportionally grow. In the first case we must check eight elements, whereas in the second we only need to check two. Thus, the time complexity in the second case is four times lower than in the first.
 
 ### _O(n log n)_
-In time complexity _O(n)_ required time is growing more than equal proportion between volume of data and time, but not so fast.
+In time complexity _O(n log n)_ required time is growing more than equal proportion between volume of data and time, but not so fast.
 
 The example below shows how binary search works:
 ####
@@ -79,8 +79,8 @@ binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 5) # output is also 4
 ```
 As we can see, the volume of data doubled, but it appended only one step to complete an operation, yet it only added one additional step to complete the operation. Time complexity has increased, but it has not doubled in proportion to the array's growth. This phenomenon is referred to as _logarithmic time complexity_.
 
-### _O(n^2)_
-_O(n^2)_ means that the processing time increases in direct proportion to a doubled volume of data.
+### _O(n<sup>2</sup>)_
+_O(n<sup>2</sup>)_ means that the processing time increases in direct proportion to a doubled volume of data.
 
 The code below is designed to generate an array containing all possible multiplied pairs of the elements from the original array:
 ####
@@ -99,11 +99,11 @@ print(multiplyPairs([1, 2, 3, 4])) # output is [1, 2, 3, 4, 2, 4, 6, 8, 3, 6, 9,
 ```
 When the array consists of only two elements, we must evaluate 4 operations. In the case of an array with four elements, the total number of operations required to compute all possible multiplied pairs is 16. The quadratic dependence on the volume of data in the algorithm is evident.
 
-### _O(n^3)_
-The time complexity _O(n^3)_ indicates that the required time increases threefold with the volume of data.
+### _O(n<sup>3</sup>)_
+The time complexity _O(n<sup>3</sup>)_ indicates that the required time increases threefold with the volume of data.
 
-A simple example A straightforward example is the multiplication of two matrices of order _nxn_. Each operation involves three nested loops, which implies that we must process an array for each element with a complexity of 
-_(array length)^2_.
+A simple example is the multiplication of two matrices of order _nxn_. Each operation involves three nested loops, which implies that we must process an array for each element with a complexity of 
+_(array length)<sup>3</sup>_.
 ####
 ```python
 def multiplyMatrices (matrixA, matrixB):
@@ -151,8 +151,8 @@ print(Permutations([1, 2, 3]) ) # output is [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2
 ```
 As evident, the time complexity in the second instance escalated to 3! due to the array containing three elements, while the first instance remained at 2! with only two elements.
 
-### _O(2^n)_
-The time complexity _O(2^n)_ represents exponential time complexity with a base of two and is dependent on value of n.
+### _O(2<sup>n</sup>)_
+The time complexity _O(2<sup>n</sup>)_ represents exponential time complexity with a base of two and is dependent on value of n.
 
 The example below demonstrates a recursive algorithm for generating all possible subsets of the input list of symbols.
 ####
